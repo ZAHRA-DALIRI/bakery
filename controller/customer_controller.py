@@ -6,14 +6,14 @@ from model.tools.decorators import exception_handling
 class CustomerController:
     @staticmethod
     @exception_handling
-    def save(name, family):
-        customer = Customer(None, name, family, status)
+    def save(id, name, family, national_code, phone_number, email, address, birth_date, status):
+        customer = Customer(id, name, family, national_code, phone_number, email, address, birth_date, status)
         return True, CustomerBl.save(customer)
 
     @staticmethod
     @exception_handling
-    def edit(id, name, family, status=True):
-        customer = Customer(id, name, family, status)
+    def edit(name, family, national_code, phone_number, email, address, birth_date, status=True):
+        customer = Customer(name, family, national_code, phone_number, email, address, birth_date, status)
         return True, CustomerBl.edit(customer)
 
     @staticmethod
