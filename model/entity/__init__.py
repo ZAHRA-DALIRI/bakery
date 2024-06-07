@@ -4,7 +4,7 @@ from sqlalchemy.orm import relationship
 from model.entity.base import Base
 from model.entity.customer import Customer
 from model.entity.employee import Employee
-from model.entity.device_components import Component
+from model.entity.components import Component
 from model.entity.device import Device
 from model.entity.sell import Sell
 

@@ -2,50 +2,49 @@ from controller.exceptions.exceptoins import DeviceNotFoundError
 from model.da.da import DataAccess
 from model.entity import Device
 
-Device_da = DataAccess(Device)
+device_da = DataAccess(Device)
 
 
 class DeviceBl:
     @staticmethod
-    def save(device_id, name, model):
-        return Device_da.save(device_id, name, model)
+    def save(device):
+        return device_da.save(device)
 
     @staticmethod
-    def edit(device_id,):
-        if Device_da.find_by_id(device_id):
-            return Device_da.edit(Device)
+    def edit(device):
+        if device_da.find_by_device_id(device.device_id):
+            return device_da.edit(device)
         else:
             raise DeviceNotFoundError()
 
     @staticmethod
-    def remove(id):
-        Device = Device_da.find_by_id(id)
-        if Device:
-            return Device_da.remove(Device)
+    def remove(device_id):
+        device = device_da.find_by_device_id(device_id)
+        if device:
+            return device_da.remove(device)
         else:
             raise DeviceNotFoundError()
 
     @staticmethod
     def find_all():
-        Device_list = Device_da.find_all()
-        if Device_list:
-            return Device_list
+        device_list = device_da.find_all()
+        if device_list:
+            return device_list
         else:
             raise DeviceNotFoundError()
 
     @staticmethod
-    def find_by_id(id):
-        Device = Device_da.find_by_id(id)
-        if Device:
-            return Device
+    def find_by_id(device_id):
+        device = device_da.find_by_device_id(device_id)
+        if device:
+            return device
         else:
             raise DeviceNotFoundError()
 
     @staticmethod
     def find_by_model(model):
-        Device_list = Device_da.find_by(Device.model == model)
-        if Device_list:
-            return Device_list
+        device_list = device_da.find_by(Device.model == model)
+        if device_list:
+            return device_list
         else:
             raise DeviceNotFoundError()
-

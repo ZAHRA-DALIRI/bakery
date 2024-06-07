@@ -12,14 +12,14 @@ class EmployeeBl:
 
     @staticmethod
     def edit(employee):
-        if employee_da.find_by_id(employee.id):
+        if employee_da.find_by_employee_id(employee.employee_id):
             return employee_da.edit(employee)
         else:
             raise EmployeeNotFoundError()
 
     @staticmethod
-    def remove(id):
-        employee = employee_da.find_by_id(id)
+    def remove(employee_id):
+        employee = employee_da.find_by_employee_id(employee_id)
         if employee:
             return employee_da.remove(employee)
         else:
@@ -34,8 +34,8 @@ class EmployeeBl:
             raise EmployeeNotFoundError()
 
     @staticmethod
-    def find_by_id(id):
-        employee = employee_da.find_by_id(id)
+    def find_by_id(employee_id):
+        employee = employee_da.find_by_employee_id(employee_id)
         if employee:
             return employee
         else:

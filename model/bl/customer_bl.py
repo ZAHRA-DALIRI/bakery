@@ -12,14 +12,14 @@ class CustomerBl:
 
     @staticmethod
     def edit(customer):
-        if customer_da.find_by_id(customer.id):
+        if customer_da.find_by_customer_id(customer.customer_id):
             return customer_da.edit(customer)
         else:
             raise CustomerNotFoundError()
 
     @staticmethod
-    def remove(id):
-        customer = customer_da.find_by_id(id)
+    def remove(customer_id):
+        customer = customer_da.find_by_customer_id(customer_id)
         if customer:
             return customer_da.remove(customer)
         else:
@@ -34,8 +34,8 @@ class CustomerBl:
             raise CustomerNotFoundError()
 
     @staticmethod
-    def find_by_id(id):
-        customer = customer_da.find_by_id(id)
+    def find_by_id(customer_id):
+        customer = customer_da.find_by_customer_id(customer_id)
         if customer:
             return customer
         else:
@@ -48,6 +48,3 @@ class CustomerBl:
             return customer_list
         else:
             raise CustomerNotFoundError()
-
-
-# todo : employee_bl, component_bl, device_bl

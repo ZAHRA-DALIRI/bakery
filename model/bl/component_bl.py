@@ -12,14 +12,14 @@ class ComponentBl:
 
     @staticmethod
     def edit(component):
-        if component_da.find_by_id(component.id):
+        if component_da.find_by_component_id(component.component_id):
             return component_da.edit(component)
         else:
             raise ComponentNotFoundError()
 
     @staticmethod
-    def remove(id):
-        component = component_da.find_by_id(id)
+    def remove(component_id):
+        component = component_da.find_by_component_id(component_id)
         if component:
             return component_da.remove(component)
         else:
@@ -34,8 +34,8 @@ class ComponentBl:
             raise ComponentNotFoundError()
 
     @staticmethod
-    def find_by_id(id):
-        component = component_da.find_by_id(id)
+    def find_by_id(component_id):
+        component = component_da.find_by_component_id(component_id)
         if component:
             return component
         else:
@@ -48,6 +48,3 @@ class ComponentBl:
             return component_list
         else:
             raise ComponentNotFoundError()
-
-
-

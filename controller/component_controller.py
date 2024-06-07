@@ -1,25 +1,25 @@
 from model.bl.component_bl import ComponentBl
-from model.entity.device_components import Component
+from model.entity.components import Component
 from model.tools.decorators import exception_handling
 
 
 class ComponentController:
     @staticmethod
     @exception_handling
-    def save(id, name, model, serial, description):
-        component = Component(id, name, model, serial, description)
+    def save(component_id, name, model, serial, description, device):
+        component = Component(component_id, name, model, serial, description, device)
         return True, ComponentBl.save(component)
 
     @staticmethod
     @exception_handling
-    def edit(name, model, serial, description):
-        component = Component(name, model, serial, description)
+    def edit(component_id, name, model, serial, description, device):
+        component = Component(component_id, name, model, serial, description, device)
         return True, ComponentBl.edit(component)
 
     @staticmethod
     @exception_handling
-    def remove(id):
-        return True, ComponentBl.remove(id)
+    def remove(component_id):
+        return True, ComponentBl.remove(component_id)
 
     @staticmethod
     @exception_handling
@@ -28,8 +28,8 @@ class ComponentController:
 
     @staticmethod
     @exception_handling
-    def find_by_id(id):
-        return True, ComponentBl.find_by_id(id)
+    def find_by_id(component_id):
+        return True, ComponentBl.find_by_id(component_id)
 
     @staticmethod
     @exception_handling
