@@ -18,8 +18,8 @@ class Sell(Base):
     emp_id = Column(Integer, ForeignKey("employee_tbl.employee_id"))
     employee = relationship("Employee")
 
-    def __init__(self, sell_id, date_time, price, device, customer, employee):
-        self.sell_id = sell_id
+    def __init__(self, date_time, price, device, customer, employee):
+        self.sell_id = None
         self.date_time = date_time
         self.price = price
         self.device = device
@@ -47,4 +47,3 @@ class Sell(Base):
             self._price = price
         else:
             raise ValueError("مبلغ نامعتبر است")
-
